@@ -27,7 +27,6 @@ func ConnectHandler(ip string, username string, password string, port int) *ssh.
 	if err != nil {
 		log.Fatal("Failed to dial: ", err)
 	}
-	//defer client.Close()
 
     return client
 }
@@ -45,7 +44,7 @@ func SendCommand(client *ssh.Client,command string) string {
 	// the remote side using the Run method.
 	var b bytes.Buffer
 	session.Stdout = &b
-	if err := session.Run("/usr/bin/whoami"); err != nil {
+	if err := session.Run(command); err != nil {
 		log.Fatal("Failed to run: " + err.Error())
 	}
     return b.String()

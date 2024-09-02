@@ -1,4 +1,4 @@
-module gomiko.go
+module github.com/warrenr37/gomiko
 
 go 1.22.2
 

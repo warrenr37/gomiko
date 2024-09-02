@@ -1,11 +1,11 @@
 package gomiko
 
 import (
-	"log"
+    "log"
     "bytes"
     "strconv"
 
-	"golang.org/x/crypto/ssh"
+    "golang.org/x/crypto/ssh"
 )
 
 func ConnectHandler(ip string, username string, password string, port int) *ssh.Client {

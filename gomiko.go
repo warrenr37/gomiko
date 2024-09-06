@@ -32,16 +32,15 @@ func ConnectHandler(ip string, username string, password string, port int) *ssh.
 }
 
 func SendCommand(client *ssh.Client,command string) string {
-	// Each ClientConn can support multiple interactive sessions,
-	// represented by a Session.
+	// Creates a session to which a single command is passed.
+    // Then the session is closed after the output is returned as a string
 	session, err := client.NewSession()
 	if err != nil {
 		log.Fatal("Failed to create session: ", err)
 	}
 	defer session.Close()
 
-	// Once a Session is created, you can execute a single command on
-	// the remote side using the Run method.
+	// 
 	var b bytes.Buffer
 	session.Stdout = &b
 	if err := session.Run(command); err != nil {
